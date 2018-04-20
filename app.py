@@ -24,5 +24,10 @@ def list_users():
     return str(result.keys())
 
 
+@app.route("/create_dog")
+def crete_dog():
+    return "ok"
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
