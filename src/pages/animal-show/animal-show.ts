@@ -16,11 +16,11 @@ import { Animal } from '../../Services/Interfaces';
 })
 export class AnimalShowPage {
 
-   animal: Animal;
+   animals: Animal[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.animal = 
-    this.animal = {name: "ola"}; 
+    this.animals = 
+      this.animals = [{ name: "becas" }, { name: "carlota" }]; 
 
     // ionViewDidLoad() {
     //   // save nav params to company object
