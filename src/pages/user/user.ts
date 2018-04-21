@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { User } from '../../Services/Interfaces';
 
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
@@ -18,20 +20,25 @@ import { ApiProvider } from "../../providers/api/api";
 })
 
 export class UserPage {
-  user: any = {
-    name: null,
-    username: null,
-    contact: null,
-    city: null,
-    address: null,
-    isBreeder: false,
-    latitude: null,
-    longitude: null,
-  }
-  api = "http://10.128.166.165";
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider) {
+  api = "http://10.128.166.165:5000";
+  private user: FormGroup;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: HttpClient, private formBuilder: FormBuilder,
+    public apiProvider: ApiProvider) 
+  {
+    this.user = this.formBuilder.group({
+      name: ['', Validators.required],
+      username: [''],
+      contact: [''],
+      city: [''],
+      address: [''],
+      isBreeder: [''],
+      latitude: [''],
+      longitude: [''],
+    });
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
