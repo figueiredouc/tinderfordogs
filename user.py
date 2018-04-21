@@ -1,4 +1,7 @@
 from config import fb
+import json
+from flask import Flask, request, jsonify
+
 
 
 class User:
@@ -13,6 +16,7 @@ class User:
         print self.__dict__
         fb.post("/users/", self.__dict__)
 
+
     @staticmethod
     def find_dogs():
         dogs = fb.get('/dogs', None)
@@ -21,5 +25,22 @@ class User:
         #    print dogs[dog]
 
     @staticmethod
-    def find_my_dogs(id):
-        pass
+    def list_my_dogs(user_id):
+        dogs = User.find_dogs()
+
+        response = {
+        	"code": 400,
+        	"type":'list_my_dogs/' + user_id,
+        	"data": []
+        }
+
+        # {dog_id : dict for all the attributes}
+        for dog in dogs:
+        	
+        	if dogs[dog]['owner'] == user_id:
+        		response['data'].append(dogs[dog])
+
+        if response['data']:
+        	response['code'] = 200
+        	
+      	return jsonify(response)

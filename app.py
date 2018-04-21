@@ -52,7 +52,7 @@ def list_info_dog(id):
     user = firebase1.get('/users/' + id, None)
     response = {
     	"code":400,
-    	"type":'list_info_user' +id,
+    	"type":'list_info_user/' +id,
     	"data":user
     }
 
@@ -64,7 +64,7 @@ def list_info_dog(id):
 
 @app.route("/list_my_dogs/<user_id>")
 def list_my_dogs(user_id):
-    User.list_my_dogs(user_id)
+    return User.list_my_dogs(user_id)
 
 
 
@@ -75,12 +75,11 @@ def list_dogs():
         "type": "list_dogs",
         "data": User.find_dogs()
     }
-    print response
     return jsonify(response)
 
 
 @app.route("/create_dog", methods=['POST'])
-def crete_dog():
+def create_dog():
     # print request.form.key
     dog = Dog(request)
     # firebase1.post("/dogs/", dog.__dict__)
