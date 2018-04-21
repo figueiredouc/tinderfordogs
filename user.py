@@ -23,3 +23,20 @@ class User:
     @staticmethod
     def find_my_dogs(id):
         pass
+
+    @staticmethod
+    def feed(msg):
+        data_dogs = []
+        dogs = User.find_dogs()
+        for dog in dogs:
+            level = 0
+            if (dogs[dog]['weight']) >= (msg['min_weight']):
+                if (dogs[dog]['weight']) <= (msg['max_weight']):
+                    level += 1
+            
+
+
+                    # raca []
+                    # weight <>
+                    # cor = []
+                    # land of standings = []

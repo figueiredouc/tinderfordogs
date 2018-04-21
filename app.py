@@ -5,7 +5,6 @@ import json
 from flask_cors import CORS
 from user import User
 
-
 app = Flask(__name__)
 firebase1 = firebase.FirebaseApplication('https://tinderdogs-998c1.firebaseio.com', authentication=None)
 CORS(app)
@@ -31,41 +30,45 @@ def list_users():
     result = firebase1.get('/users', None)
     return str(result)
 
+
 @app.route("/list_info_user/<id>")
 def list_info_user(id):
     user = firebase1.get('/users/' + id, None)
     response = {
-    	"code":400,
-    	"type":'list_info_user' +id,
-    	"data":user
+        "code": 400,
+        "type": 'list_info_user' + id,
+        "data": user
     }
 
     if user:
-    	response['code'] = 200
+        response['code'] = 200
 
     return json.dumps(response)
-
 
 
 @app.route("/list_info_dog/<id>")
 def list_info_dog(id):
     user = firebase1.get('/users/' + id, None)
     response = {
-    	"code":400,
-    	"type":'list_info_user' +id,
-    	"data":user
+        "code": 400,
+        "type": 'list_info_user' + id,
+        "data": user
     }
 
     if user:
-    	response['code'] = 200
+        response['code'] = 200
 
     return json.dumps(response)
 
 
-@app.route("/list_my_dogs/<user_id>")
-def list_my_dogs(user_id):
-    User.list_my_dogs(user_id)
+# @app.route("/list_my_dogs/<user_id>")
+# def list_my_dogs(user_id):
+#    User.list_my_dogs(user_id)
 
+@app.route('/feed')
+def feed():
+    User.feed()
+    return "ok"
 
 
 @app.route("/list_dogs")
