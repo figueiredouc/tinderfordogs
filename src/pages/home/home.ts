@@ -33,4 +33,7 @@ export class HomePage {
   showAnimal() {
     this.navCtrl.push('AnimalShowPage');
   }
+  selectFilters() {
+    this.navCtrl.push('SelectFiltersPage');
+  }
 }

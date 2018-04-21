@@ -17,7 +17,7 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: 'animal.html',
 })
 export class AnimalPage {
-
+  
   private animal : FormGroup;
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.animal = this.formBuilder.group({
