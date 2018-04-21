@@ -2,18 +2,24 @@ from config import fb
 
 
 class User:
-    def __init__(self, r):
-        self.name = r.form.get('name')
-        self.latitude = r.form.get('latitude')
-        self.latitude = r.form.get('latitude')
-        self.city = r.form.get('city')
-        self.contact = r.form.get('contact')
-        self.isBreeder = r.form.get('isBgreeder')
+    def __init__(self, msg):
+        self.name = msg['name']
+        self.username = msg['username']
+        self.contact = msg['contact']
+        self.address = msg['address']
+        self.isBreeder = msg['isBreeder']
+        self.latitude = msg['latitude']
+        self.longitude = msg['longitude']
+        print self.__dict__
         fb.post("/users/", self.__dict__)
 
     @staticmethod
-    def find_my_dogs():
-        dogs = fb.get('/dogs', {"a": "a"})
-        print dogs
-        #for dog in dogs:
+    def find_dogs():
+        dogs = fb.get('/dogs', None)
+        return dogs
+        # for dog in dogs:
         #    print dogs[dog]
+
+    @staticmethod
+    def find_my_dogs(id):
+        pass
