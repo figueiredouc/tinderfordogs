@@ -2,6 +2,7 @@ from flask import Flask, request
 from firebase import firebase
 import uuid
 from dog import Dog
+from user import User
 import json
 
 
@@ -24,9 +25,11 @@ def create_user():
             'latitude': request.form.get('latitude'),
             'longitude': request.form.get('longitude')}
 
+    print request.values
+
     firebase1.post("/users/", data)
 
-    return str(uuid.uuid1())
+    return "ok"
 
 
 @app.route("/list_users")
@@ -42,11 +45,19 @@ def list_info_user(id):
     print type(allusers) is dict
 
 
+@app.route("/list_my_dogs")
+def list_my_dogs():
+    User.find_my_dogs()
+    return "ok"
+
+
+
 @app.route("/create_dog", methods=['POST'])
 def crete_dog():
-    dog = Dog("teste")
-    firebase1.post("/dogs/", dog.__dict__)
-    return dog.name
+    #print request.form.key
+    dog = Dog(request)
+    #firebase1.post("/dogs/", dog.__dict__)
+    return str(dog.__dict__)
 
 
 if __name__ == "__main__":
