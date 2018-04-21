@@ -48,7 +48,7 @@ def list_info_user(id):
 
 
 @app.route("/list_info_dog/<id>")
-def list_info_user(id):
+def list_info_dog(id):
     user = firebase1.get('/users/' + id, None)
     response = {
     	"code":400,
@@ -69,7 +69,7 @@ def list_my_dogs(user_id):
 
 
 @app.route("/list_dogs")
-def list_my_dogs():
+def list_dogs():
     response = {
         "code": "200",
         "type": "list_dogs",
