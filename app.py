@@ -18,8 +18,8 @@ firebase1 = firebase.FirebaseApplication('https://tinderdogs-998c1.firebaseio.co
 @app.route("/create_user", methods=['POST'])
 def create_user():
     response = {
-        "code":400,
-        "type":'create_user'
+        "code": 400,
+        "type": 'create_user'
     }
     user = User(request)
 
@@ -48,12 +48,11 @@ def list_my_dogs():
     return "ok"
 
 
-
 @app.route("/create_dog", methods=['POST'])
 def crete_dog():
-    #print request.form.key
+    # print request.form.key
     dog = Dog(request)
-    #firebase1.post("/dogs/", dog.__dict__)
+    # firebase1.post("/dogs/", dog.__dict__)
     return str(dog.__dict__)
 
 
