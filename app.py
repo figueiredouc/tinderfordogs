@@ -4,6 +4,7 @@ import uuid
 from dog import Dog
 from user import User
 import json
+from flask_cors import CORS
 
 
 class Coordinates:
@@ -13,6 +14,7 @@ class Coordinates:
 
 app = Flask(__name__)
 firebase1 = firebase.FirebaseApplication('https://tinderdogs-998c1.firebaseio.com', authentication=None)
+CORS(app)
 
 
 @app.route("/create_user", methods=['POST'])
@@ -21,12 +23,13 @@ def create_user():
         "code": 400,
         "type": 'create_user'
     }
-    user = User(request)
+    print request.get_data()
+    user = User(json.loads(request.get_data()))
 
     if user:
         response['code'] = 200
 
-    return response
+    return str(response)
 
 
 @app.route("/list_users")
@@ -42,10 +45,15 @@ def list_info_user(id):
     print type(allusers) is dict
 
 
-@app.route("/list_my_dogs")
+@app.route("/list_dogs")
 def list_my_dogs():
-    User.find_my_dogs()
-    return "ok"
+    response = {
+        "code": "200",
+        "type": "list_dogs",
+        "data": User.find_dogs()
+    }
+
+    return str(response)
 
 
 @app.route("/create_dog", methods=['POST'])
