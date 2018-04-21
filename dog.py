@@ -15,3 +15,4 @@ class Dog:
         self.titles = r.form.get('titles')
         self.features = r.form.get('features')
         fb.post("/dogs/", self.__dict__)
+

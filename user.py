@@ -36,8 +36,6 @@ class User:
                 if (dogs[dog]['weight']) <= (msg['max_weight']):
                     level += 1
 
-
-
                     # raca []
                     # weight <>
                     # cor = []
