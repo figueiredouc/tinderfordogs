@@ -14,5 +14,57 @@
 
 
 <ion-content padding>
+  <p>Create Animal</p>
+  <form [formGroup]="animal" (ngSubmit)="createAnimal()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>Breeder Name</ion-label>
+      <ion-input type="text" formControlName="breederName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Owner Name</ion-label>
+      <ion-input type="text" formControlName="ownerName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sex</ion-label>
+      <ion-input type="text" formControlName="sex"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>birthDate</ion-label>
+      <ion-input type="text" formControlName="birthDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>landOfBirth</ion-label>
+      <ion-input type="text" formControlName="landOfBirth"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>size</ion-label>
+      <ion-input type="text" formControlName="size"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>weigth</ion-label>
+      <ion-input type="text" formControlName="weigth"></ion-input>
+    </ion-item>    
+    <ion-item>
+      <ion-label>color</ion-label>
+      <ion-input type="text" formControlName="color"></ion-input>
+    </ion-item>    
+    <ion-item>
+      <ion-label>titles</ion-label>
+      <ion-input type="text" formControlName="titles"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>features</ion-label>
+      <ion-input type="text" formControlName="features"></ion-input>
+    </ion-item>
+
+    <button ion-button type="submit">Add Animal</button>
+  </form>
 </ion-content>
