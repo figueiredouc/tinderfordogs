@@ -38,8 +38,33 @@ def list_users():
 @app.route("/list_info_user/<id>")
 def list_info_user(id):
     user = firebase1.get('/users/' + id, None)
+    response = {
+    	"code":400,
+    	"type":'list_info_user' +id,
+    	"data":user
+    }
 
-    
+    if user:
+    	response['code'] = 200
+
+    return json.dumps(response)
+
+
+
+@app.route("/list_info_dog/<id>")
+def list_info_user(id):
+    user = firebase1.get('/users/' + id, None)
+    response = {
+    	"code":400,
+    	"type":'list_info_user' +id,
+    	"data":user
+    }
+
+    if user:
+    	response['code'] = 200
+
+    return json.dumps(response)
+
 
 
 @app.route("/list_my_dogs")
