@@ -1,15 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from firebase import firebase
-import uuid
 from dog import Dog
-from user import User
 import json
 from flask_cors import CORS
-
-
-class Coordinates:
-    longitude = 0
-    latitude = 0
+from user import User
 
 
 app = Flask(__name__)
@@ -37,12 +31,10 @@ def list_users():
     result = firebase1.get('/users', None)
     return str(result)
 
-
 @app.route("/list_info_user/<id>")
 def list_info_user(id):
     user = firebase1.get('/users/' + id, None)
 
-    
 
 
 @app.route("/list_dogs")
@@ -52,8 +44,8 @@ def list_my_dogs():
         "type": "list_dogs",
         "data": User.find_dogs()
     }
-
-    return str(response)
+    print response
+    return jsonify(response)
 
 
 @app.route("/create_dog", methods=['POST'])
