@@ -40,9 +40,9 @@ def list_users():
 
 @app.route("/list_info_user/<id>")
 def list_info_user(id):
-    allusers = firebase1.get('/users', None)
+    user = firebase1.get('/users/' + id, None)
 
-    print type(allusers) is dict
+    
 
 
 @app.route("/list_my_dogs")
