@@ -1,4 +1,6 @@
 from config import fb
+import json
+from flask import Flask, request, jsonify
 
 
 class User:
@@ -33,10 +35,31 @@ class User:
             if (dogs[dog]['weight']) >= (msg['min_weight']):
                 if (dogs[dog]['weight']) <= (msg['max_weight']):
                     level += 1
-            
+
 
 
                     # raca []
                     # weight <>
                     # cor = []
                     # land of standings = []
+
+    @staticmethod
+    def list_my_dogs(user_id):
+        dogs = User.find_dogs()
+
+        response = {
+            "code": 400,
+            "type": 'list_my_dogs/' + user_id,
+            "data": []
+        }
+
+        # {dog_id : dict for all the attributes}
+        for dog in dogs:
+
+            if dogs[dog]['owner'] == user_id:
+                response['data'].append(dogs[dog])
+
+        if response['data']:
+            response['code'] = 200
+
+        return jsonify(response)
