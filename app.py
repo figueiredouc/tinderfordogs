@@ -17,18 +17,7 @@ firebase1 = firebase.FirebaseApplication('https://tinderdogs-998c1.firebaseio.co
 
 @app.route("/create_user", methods=['POST'])
 def create_user():
-    data = {'name': request.form.get('name'),
-            'city': request.form.get('city'),
-            'address': request.form.get('address'),
-            'contact': request.form.get('contact'),
-            'isBreeder': request.form.get('isBreeder'),
-            'latitude': request.form.get('latitude'),
-            'longitude': request.form.get('longitude')}
-
-    print request.values
-
-    firebase1.post("/users/", data)
-
+    User(request)
     return "ok"
 
 
