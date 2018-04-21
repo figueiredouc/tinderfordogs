@@ -34,13 +34,12 @@ def list_users():
     result = firebase1.get('/users', None)
     return str(result)
 
+
 @app.route("/list_info_user/<id>")
 def list_info_user(id):
+    allusers = firebase1.get('/users', None)
 
-	allusers = firebase1.get('/users', None)
-
-	print type(allusers) is dict
-
+    print type(allusers) is dict
 
 
 @app.route("/create_dog", methods=['POST'])
