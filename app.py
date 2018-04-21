@@ -17,8 +17,16 @@ firebase1 = firebase.FirebaseApplication('https://tinderdogs-998c1.firebaseio.co
 
 @app.route("/create_user", methods=['POST'])
 def create_user():
-    User(request)
-    return "ok"
+    response = {
+        "code":400,
+        "type":'create_user'
+    }
+    user = User(request)
+
+    if user:
+        response['code'] = 200
+
+    return response
 
 
 @app.route("/list_users")
