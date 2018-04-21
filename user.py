@@ -19,3 +19,7 @@ class User:
         return dogs
         # for dog in dogs:
         #    print dogs[dog]
+
+    @staticmethod
+    def find_my_dogs(id):
+        pass

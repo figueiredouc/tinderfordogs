@@ -35,6 +35,10 @@ def list_users():
 def list_info_user(id):
     user = firebase1.get('/users/' + id, None)
 
+@app.route("/list_my_dogs/<user_id>")
+def list_my_dogs(user_id):
+    User.list_my_dogs(user_id)
+
 
 
 @app.route("/list_dogs")
