@@ -15,7 +15,7 @@ export class ApiProvider {
     console.log('Hello ApiProvider Provider');
   }
 
-  getUsers() {
+  getDogs() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/users').subscribe(data => {
         resolve(data);
@@ -27,7 +27,7 @@ export class ApiProvider {
 
   addUser(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl + '/create_user', JSON.stringify(data))
+      this.http.post(this.apiUrl + '/create_user', JSON.stringify(data.value))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
