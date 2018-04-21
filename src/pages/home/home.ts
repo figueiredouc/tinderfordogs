@@ -29,4 +29,8 @@ export class HomePage {
   createAnimal(){
     this.navCtrl.push('AnimalPage');
   }
+
+  showAnimal() {
+    this.navCtrl.push('AnimalShowPage');
+  }
 }
