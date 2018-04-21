@@ -14,5 +14,40 @@
 
 
 <ion-content padding>
-<h1>CREATE USER</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form (ngSubmit)="addUser()">
+          <ion-item>
+            <ion-label floating>Name:</ion-label>
+            <ion-input type="text" name="username" [(ngModel)]="user.name"></ion-input>
+          </ion-item>
+        <ion-item>
+          <ion-label floating>Username:</ion-label>
+          <ion-input type="text" name="username" [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>City:</ion-label>
+          <ion-input type="text" name="username" [(ngModel)]="user.city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Address:</ion-label>
+          <ion-input type="text" name="username" [(ngModel)]="user.address"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contact:</ion-label>
+          <ion-input type="text" name="username" [(ngModel)]="user.contact"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Breeder:</ion-label>
+          <ion-input type="text" name="username" [(ngModel)]="user.breeder"></ion-input>
+        </ion-item>
+        <button ion-button type="submit" block>Create user</button>
+      </form>
+    </ion-col>
+      <!-- <ion-col text-center>
+        <div>1 of 2</div>
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
 </ion-content>
