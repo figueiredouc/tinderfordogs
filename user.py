@@ -8,7 +8,7 @@ class User:
         self.latitude = r.form.get('latitude')
         self.city = r.form.get('city')
         self.contact = r.form.get('contact')
-        self.isBreeder = r.form.get('isBreeder')
+        self.isBreeder = r.form.get('isBgreeder')
         fb.post("/users/", self.__dict__)
 
     @staticmethod
