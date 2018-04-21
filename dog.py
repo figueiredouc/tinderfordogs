@@ -5,7 +5,7 @@ class Dog:
         self.name = r.form.get('name')
         self.breeder = r.form.get('breeder')
         self.owner = r.form.get('owner')
-        self.sex = r.form.get('sex')
+        self.gender = r.form.get('gender')
         self.birth_date = r.form.get('birth_date')
         self.land_of_birth = r.form.get('land_of_birth')
         self.land_of_standing = r.form.get('land_of_standing')
