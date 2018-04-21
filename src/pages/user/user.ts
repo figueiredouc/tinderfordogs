@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+
+import { ApiProvider } from "../../providers/api/api";
 /**
  * Generated class for the UserPage page.
  *
@@ -26,23 +28,21 @@ export class UserPage {
     latitude: null,
     longitude: null,
   }
-  api = "http://10.128.166.165:5000";
+  api = "http://10.128.166.165";
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
   }
 
-  addUser(user) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.api + '/create_user', JSON.stringify(this.user), {headers: "Content-Type", "application/json"})
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+  saveUser() {
+    console.log("user:", this.user);
+    this.apiProvider.addUser(this.user).then((result) => {
+      console.log(result);
+    }, (err) => {
+      console.log(err);
     });
   }
 }
