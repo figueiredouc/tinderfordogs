@@ -25,3 +25,11 @@ export interface User {
     latitude?: string;
     longitude?: string;
 }
+
+export interface Filters {
+    rangeMinWeight?: any;
+    rangeMaxWeight?: any;
+    breed?: string;
+    color?: string;
+    lanOfStanding?: string;
+}

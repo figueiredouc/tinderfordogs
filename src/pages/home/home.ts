@@ -36,4 +36,7 @@ export class HomePage {
   showUser() {
     this.navCtrl.push('UserShowPage');
   }
+  selectFilters() {
+    this.navCtrl.push('SelectFiltersPage');
+  }
 }
