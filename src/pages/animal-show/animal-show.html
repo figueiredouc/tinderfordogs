@@ -14,13 +14,17 @@
 
 
 <ion-content padding>
-<p>ola</p>
-  <ul>
-    <li *ngFor="let animal of animals">
-       <p>{{animal.name}}</p>
-    </li>
-  </ul>
-
-  <p></p>
+<ion-list >
+  <button ion-button item *ngFor="let dog of dogs" (click)="goAnimalPage()">
+    <ion-item>
+      <h2>{{dog.name}}</h2>
+      <p></p>
+    </ion-item>
+    <ion-item>
+      <h2>Sex:</h2>
+      <p>{{dog.sex}}</p>
+    </ion-item>
+  </button>
+</ion-list>
 
 </ion-content>

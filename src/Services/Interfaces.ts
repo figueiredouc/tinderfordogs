@@ -1,5 +1,7 @@
 export interface Animal {
+    id: number;
     name: string;
+    breed?: string;
     breederName?: string;
     ownerName?: string;
     sex?: string;
@@ -13,6 +15,7 @@ export interface Animal {
 }
 
 export interface User {
+    id: number;
     name?: string;
     username: string;
     contact?: string;

@@ -30,7 +30,10 @@ export class HomePage {
     this.navCtrl.push('AnimalPage');
   }
 
-  showAnimal() {
+  listAnimal() {
     this.navCtrl.push('AnimalShowPage');
+  }
+  showUser() {
+    this.navCtrl.push('UserShowPage');
   }
 }

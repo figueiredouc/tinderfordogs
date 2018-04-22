@@ -46,7 +46,7 @@ export class UserPage {
 
   saveUser() {
     console.log("user:", this.user);
-    this.apiProvider.addUser(this.user).then((result) => {
+    this.apiProvider.add(this.user, "create_user").then((result) => {
       console.log(result);
     }, (err) => {
       console.log(err);

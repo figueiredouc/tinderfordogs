@@ -17,7 +17,19 @@ export class ApiProvider {
 
   getDogs() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/users').subscribe(data => {
+      this.http.get(this.apiUrl + '/list_dogs').subscribe(data => {
+        console.log(data);
+        resolve(data);
+
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getUsers(){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/list_users').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -25,9 +37,10 @@ export class ApiProvider {
     });
   }
 
-  addUser(data) {
+
+  add(data, endpoint) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl + '/create_user', JSON.stringify(data.value))
+      this.http.post(this.apiUrl + '/'+endpoint, JSON.stringify(data.value))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -35,6 +48,4 @@ export class ApiProvider {
         });
     });
   }
-
-
 }
